@@ -33,11 +33,12 @@ createApp({
             return (i == this.activeImage) ? 'active' : '';
         },
         next() {
-            if (this.activeImage == this.images.length - 1) {
-                this.activeImage = 0
-            } else {
-                this.activeImage++
-            }
+            this.activeImage = (this.activeImage + 1) % this.images.length
+            // if (this.activeImage == this.images.length - 1) {
+            //     this.activeImage = 0
+            // } else {
+            //     this.activeImage++
+            // }
             clearInterval(this.timer)
             this.timer = setInterval(() => {
                 this.next();
@@ -45,11 +46,12 @@ createApp({
             }, 3000)
         },
         prev() {
-            if (this.activeImage == 0) {
-                this.activeImage = this.images.length - 1
-            } else {
-                this.activeImage--
-            }
+            this.activeImage = (this.activeImage + this.images.length - 1) % this.images.length
+            // if (this.activeImage == 0) {
+            //     this.activeImage = this.images.length - 1
+            // } else {
+            //     this.activeImage--
+            // }
             clearInterval(this.timer)
             this.timer = setInterval(() => {
                 this.next();
